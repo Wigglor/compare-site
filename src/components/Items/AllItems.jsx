@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Card from "../UI/Card";
 import Item from "./Item/Item";
+import CompareContext from "../../store/compare-context";
+import { useContext, useState } from "react";
+import Modal from "../UI/Modal";
 
 const DUMMY_MEALS = [
   {
@@ -29,7 +32,13 @@ const DUMMY_MEALS = [
   },
 ];
 
-const AllItems = () => {
+const AllItems = (props) => {
+  // const compareCtx = useContext(CompareContext);
+
+  // if (compareCtx.items.length > 0) {
+  //   console.log(compareCtx.items.length);
+  // }
+
   const mealsList = DUMMY_MEALS.map((meal) => (
     <Item
       key={meal.id}
@@ -37,6 +46,7 @@ const AllItems = () => {
       name={meal.name}
       description={meal.description}
       price={meal.price}
+      // onShowCompare={onShowCompare}
     />
   ));
 

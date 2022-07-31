@@ -16,8 +16,7 @@ const CompareProvider = (props) => {
       return [...prevState, item];
     });
 
-    console.log("ADD");
-    console.log(cartState);
+    // console.log("ADD");
   };
 
   const removeItemFromCartHandler = (id) => {
@@ -32,7 +31,7 @@ const CompareProvider = (props) => {
   // };
 
   const compareContext = {
-    items: cartState.items,
+    items: cartState,
     addItem: addItemToCompareHandler,
     // removeItem: removeItemFromCartHandler,
   };
