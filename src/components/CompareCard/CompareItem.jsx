@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import { IoIosTrash } from "react-icons/io";
+import CompareContext from "../../store/compare-context";
+import { useContext } from "react";
 
 const CompareItem = (props) => {
+  const compareCtx = useContext(CompareContext);
+
+  const removeItem = (e) => {
+    console.log(e);
+    console.log(props);
+    compareCtx.removeItem(props.id);
+  };
   return (
     <CompareItemLi>
       <CompareItemLiInner>
@@ -10,7 +19,7 @@ const CompareItem = (props) => {
         <span>$ {props.id}</span>
       </CompareItemLiInner>
       <CompareItemLiInnerRemove>
-        <IoIosTrash />
+        <IoIosTrash onClick={removeItem} />
       </CompareItemLiInnerRemove>
     </CompareItemLi>
   );
@@ -20,6 +29,7 @@ export default CompareItem;
 
 const CompareItemLi = styled.li`
   background-color: #282c34;
+  // background-color: #da2c2c;
   list-style-type: none;
   color: #fff;
   padding: 1rem;

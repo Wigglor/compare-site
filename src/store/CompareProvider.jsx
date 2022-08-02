@@ -11,12 +11,9 @@ const CompareProvider = (props) => {
   const [cartState, setCompareState] = useState([]);
 
   const addItemToCompareHandler = (item) => {
-    //   dispatchCartAction({ type: 'ADD', item: item });
     setCompareState((prevState) => {
       return [...prevState, item];
     });
-
-    // console.log("ADD");
   };
 
   const removeItemFromCartHandler = (itemId) => {
@@ -31,16 +28,7 @@ const CompareProvider = (props) => {
         return item.id !== itemId;
       })
     );
-    // console.log(newState);
-
-    // console.log("REMOVE");
   };
-
-  // const cartContext = {
-  //   items: cartState.items,
-  //   addItem: addItemToCartHandler,
-  //   removeItem: removeItemFromCartHandler,
-  // };
 
   const compareContext = {
     items: cartState,
