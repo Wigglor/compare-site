@@ -24,18 +24,19 @@ const Item = (props) => {
   //   }
   // };
 
-  const compare = (e, item) => {
+  const compare = (e, state) => {
     // e.target.style.color = "#5e9639";
-
-    compareCtx.addItem({
-      id: props.id,
-      name: props.name,
-      price: props.price,
-      // addedState: true,
-    });
-    console.log(item);
-    console.log(compareCtx.items);
-    // setIsShown((current) => !current);
+    console.log(state.action);
+    if (state.action === "add") {
+      compareCtx.addItem({
+        id: props.id,
+        name: props.name,
+        price: props.price,
+      });
+      console.log(compareCtx.items);
+    } else if (state.action === "remove") {
+      compareCtx.removeItem(props.id);
+    }
   };
 
   return (
@@ -47,12 +48,22 @@ const Item = (props) => {
         <div>{price}</div>
       </div>
       <CompareDiv>
-        <IoIosAddCircle
-          size={25}
-          style={{ cursor: "pointer" }}
-          onClick={(e) => compare(e, props)}
-          // addedState={true}
-        />
+        {!compareCtx.items.some((item) => item.id === props.id) ? (
+          <IoIosAddCircle
+            size={25}
+            style={{ cursor: "pointer" }}
+            onClick={(e) => compare(e, { action: "add" })}
+            // addedState={true}
+          />
+        ) : (
+          <IoIosRemoveCircle
+            size={25}
+            style={{ cursor: "pointer", color: "#da2c2c" }}
+            onClick={(e) => compare(e, { action: "remove" })}
+            // addedState={true}
+          />
+        )}
+
         {/* {!compareCtx.items.includes(props) && (
           <IoIosAddCircle
             size={25}

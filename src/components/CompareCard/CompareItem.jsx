@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IoIosTrash } from "react-icons/io";
 
 const CompareItem = (props) => {
   return (
@@ -8,6 +9,9 @@ const CompareItem = (props) => {
         <span>$ {props.price}</span>
         <span>$ {props.id}</span>
       </CompareItemLiInner>
+      <CompareItemLiInnerRemove>
+        <IoIosTrash />
+      </CompareItemLiInnerRemove>
     </CompareItemLi>
   );
 };
@@ -20,6 +24,7 @@ const CompareItemLi = styled.li`
   color: #fff;
   padding: 1rem;
   margin: 1rem;
+  position: relative;
   //   display: flex;
   //   flex-direction: column;
 `;
@@ -30,4 +35,11 @@ const CompareItemLiInner = styled.div`
   span {
     margin: 0.5rem 0.5rem;
   }
+`;
+
+const CompareItemLiInnerRemove = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
 `;
