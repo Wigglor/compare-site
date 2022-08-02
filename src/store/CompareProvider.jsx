@@ -19,9 +19,21 @@ const CompareProvider = (props) => {
     // console.log("ADD");
   };
 
-  const removeItemFromCartHandler = (id) => {
-    //   dispatchCartAction({ type: 'REMOVE', id: id });
-    console.log("REMOVE");
+  const removeItemFromCartHandler = (itemId) => {
+    console.log(itemId);
+    // const newState = cartState.filter((item) => {
+    //   return item.id !== itemId;
+    // });
+    // setCompareState(newState);
+
+    setCompareState(
+      cartState.filter((item) => {
+        return item.id !== itemId;
+      })
+    );
+    // console.log(newState);
+
+    // console.log("REMOVE");
   };
 
   // const cartContext = {
@@ -33,7 +45,7 @@ const CompareProvider = (props) => {
   const compareContext = {
     items: cartState,
     addItem: addItemToCompareHandler,
-    // removeItem: removeItemFromCartHandler,
+    removeItem: removeItemFromCartHandler,
   };
 
   return (
