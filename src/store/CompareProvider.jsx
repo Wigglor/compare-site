@@ -11,9 +11,14 @@ const CompareProvider = (props) => {
   const [cartState, setCompareState] = useState([]);
 
   const addItemToCompareHandler = (item) => {
-    setCompareState((prevState) => {
-      return [...prevState, item];
-    });
+    if (cartState.length < 4) {
+      console.log(cartState.length);
+      setCompareState((prevState) => {
+        return [...prevState, item];
+      });
+    } else {
+      alert("Only 4 items allowed");
+    }
   };
 
   const removeItemFromCartHandler = (itemId) => {
