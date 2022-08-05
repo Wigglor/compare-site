@@ -34,5 +34,5 @@ const SearchArea = styled.div`
 const Header_ = styled.header`
   margin: 0rem 0rem;
   padding: 1rem;
-  background-color: #181325;
+  background-color: #ef4a25;
 `;

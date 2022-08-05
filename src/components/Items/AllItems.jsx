@@ -57,7 +57,6 @@ const DUMMY_MEALS = [
 ];
 
 const AllItems = (props) => {
-  console.log(props.filterState);
   const mealsList = DUMMY_MEALS.filter((meal) =>
     meal.name.match(new RegExp(props.filterState, "i"))
   ).map((meal) => {
