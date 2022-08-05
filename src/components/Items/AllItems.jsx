@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "../UI/Card";
 import Item from "./Item/Item";
-import CompareContext from "../../store/compare-context";
+import DataContext from "../../store/data-context";
 import { useContext, useState } from "react";
 import Modal from "../UI/Modal";
 
@@ -30,25 +30,48 @@ const DUMMY_MEALS = [
     description: "Healthy...and green...",
     price: 18.99,
   },
+  {
+    id: "m5",
+    name: "Spicy Ramen",
+    description: "hot...",
+    price: 13.99,
+  },
+  {
+    id: "m6",
+    name: "Pizza",
+    description: "delicious slices",
+    price: 11.99,
+  },
+  {
+    id: "m7",
+    name: "Kobe beef",
+    description: "For fine tasters",
+    price: 99.99,
+  },
+  {
+    id: "m8",
+    name: "Pasta Bolognese",
+    description: "An Italian classic",
+    price: 12.99,
+  },
 ];
 
 const AllItems = (props) => {
-  // const compareCtx = useContext(CompareContext);
-
-  // if (compareCtx.items.length > 0) {
-  //   console.log(compareCtx.items.length);
-  // }
-
-  const mealsList = DUMMY_MEALS.map((meal) => (
-    <Item
-      key={meal.id}
-      id={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
-      // onShowCompare={onShowCompare}
-    />
-  ));
+  console.log(props.filterState);
+  const mealsList = DUMMY_MEALS.filter((meal) =>
+    meal.name.match(new RegExp(props.filterState, "i"))
+  ).map((meal) => {
+    return (
+      <Item
+        key={meal.id}
+        id={meal.id}
+        name={meal.name}
+        description={meal.description}
+        price={meal.price}
+        // onShowCompare={onShowCompare}
+      />
+    );
+  });
 
   return (
     <AllItemsSection>

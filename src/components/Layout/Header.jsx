@@ -2,16 +2,21 @@ import { Fragment } from "react";
 import styled from "styled-components";
 
 const Header = (props) => {
-  const submitInput = (e) => {
-    console.log(e.target.value);
-  };
+  // const submitInput = (e) => {
+  //   console.log(e.target.value);
+  // };
   return (
     <Fragment>
       <Header_>
         <SearchArea>
           {/* <searchArea> */}
           <form action="/">
-            <input type="text" id="fname" name="fname" onChange={submitInput} />
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              onChange={props.onChange}
+            />
           </form>
         </SearchArea>
       </Header_>

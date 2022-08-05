@@ -6,14 +6,14 @@ import CompareContext from "./store/compare-context";
 import Modal from "./components/UI/Modal";
 
 function App() {
-  // const cartCtx = useContext(CompareContext);
-  // console.log("Toggle Modal");
-
+  const [filterState, setfilterState] = useState("");
+  const submitInput = (e) => {
+    setfilterState(e.target.value);
+  };
   return (
     <CompareProvider>
-      <Header />
-      <Items />
-      {/* {cartCtx.items.length > 0 && <Modal />} */}
+      <Header onChange={submitInput} />
+      <Items filterInput={filterState} />
     </CompareProvider>
   );
 }
